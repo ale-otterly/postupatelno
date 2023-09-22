@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Группы</title>
+    <link rel="stylesheet" href="/css/groups.css">
+    <link rel="stylesheet" href="/css/root.css">
+</head>
+<body>
+<header class="header" th:replace="~{fragments/header-fragment :: headerFragment}"></header>
+<section class="groups-section">
+    <div class="group-container" th:each="group : ${groupsData}" th:style="'background:' + ${group.teacher.color} + ';'">
+        <a class="group-link" target="_blank" th:href="'groups/' + ${group.id}">
+            <div class="subject" th:text="${group.subject.getDisplayValue()} + ' — ' + ${group.year} + ' класс'"></div>
+            <div class="attendance-type" th:text="${group.attendanceType.getDisplayValue()}"></div>
+            <div class="teacher" th:text="${group.teacher.name}"></div>
+        </a>
+        <ol class="students-list">
+            <li class="students-list-item" th:each="student : ${group.students.stream().sorted().toList()}"
+               th:if="${!sigController.getByGroupIdAndStudentId(group.id, student.id).waitingList}">
+                <a class="student-link" th:text="${student.name}"
+                   th:href="'students/' + ${student.id}" target="_blank"></a>
+            </li>
+        </ol>
+        <ul class="students-waiting-list">
+            <li class="waiting-list-item" th:each="student : ${group.students.stream().sorted().toList()}"
+               th:if="${sigController.getByGroupIdAndStudentId(group.id, student.id).waitingList}">
+                <a class="waiting-student-link" th:text="${student.name}"
+                   th:href="'students/' + ${student.id}" target="_blank"></a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<script src="/js/groups.js"></script>
+</body>
+</html>

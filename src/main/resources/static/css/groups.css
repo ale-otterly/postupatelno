@@ -1,0 +1,45 @@
+body {
+    font-family: system-ui, sans-serif;
+}
+
+.groups-section {
+    margin: 30px auto 0;
+    width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.group-container {
+    padding: 5px 10px;
+    border-radius: 3px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+}
+
+ul {
+    list-style: none;
+}
+
+ol {
+    margin: 0;
+}
+
+.student-link, .waiting-student-link, .group-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 5px;
+}
+
+.student-link:hover, .waiting-student-link:hover, .group-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.students-list-item:last-child {
+    margin-bottom: 10px;
+}
+
+.waiting-list-item:first-child {
+    border-top: 1px solid var(--border-color);
+}

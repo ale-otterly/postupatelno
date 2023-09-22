@@ -1,0 +1,197 @@
+:root {
+    --numDays: 7;
+    --numHours: 23;
+    --timeHeight: 20px;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+}
+
+.timetable-container {
+    margin-top: 30px;
+}
+
+.calendar {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    margin: 0 1rem;
+}
+
+.timeline {
+    grid-row: 2 / span 1;
+    display: grid;
+    grid-template-rows: repeat(var(--numHours), var(--timeHeight));
+}
+
+.time-marker:nth-child(even) {
+    visibility: hidden;
+}
+
+.days-container {
+    grid-column: 2 / span 1;
+    display: grid;
+    grid-template-columns: repeat(var(--numDays), minmax(110px, 1fr));
+}
+
+.day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.lessons {
+    display: grid;
+    grid-template-rows: repeat(var(--numHours), var(--timeHeight));
+    grid-template-columns: repeat(var(--numDays), minmax(110px, 1fr));
+    grid-column-gap: 5px;
+    border-radius: 5px;
+    background: var(--background-color);
+}
+
+.lesson {
+    border-radius: 5px;
+    grid-row-end: span 3;
+    grid-column-end: span 1;
+    font-size: small;
+    align-self: stretch;
+    cursor: pointer;
+}
+
+.title {
+    font-weight: 600;
+    margin: 0 0.3rem 0.2rem;
+}
+
+.time-room {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.3rem;
+}
+
+.time {
+    margin: 0;
+    font-weight: 100;
+}
+
+.room {
+    margin: 0;
+    font-weight: 100;
+}
+
+.teacher {
+    margin: 0 0.3rem;
+    font-weight: 100;
+}
+
+.start-10-00 {
+    grid-row-start: 1;
+}
+
+.start-10-30 {
+    grid-row-start: 2;
+}
+
+.start-11-00 {
+    grid-row-start: 3;
+}
+
+.start-11-30 {
+    grid-row-start: 4;
+}
+
+.start-12-00 {
+    grid-row-start: 5;
+}
+
+.start-12-30 {
+    grid-row-start: 6;
+}
+
+.start-13-00 {
+    grid-row-start: 7;
+}
+
+.start-13-30 {
+    grid-row-start: 8;
+}
+
+.start-14-00 {
+    grid-row-start: 9;
+}
+
+.start-14-30 {
+    grid-row-start: 10;
+}
+
+.start-15-00 {
+    grid-row-start: 11;
+}
+
+.start-15-30 {
+    grid-row-start: 12;
+}
+
+.start-16-00 {
+    grid-row-start: 13;
+}
+
+.start-16-30 {
+    grid-row-start: 14;
+}
+
+.start-17-00 {
+    grid-row-start: 15;
+}
+
+.start-17-30 {
+    grid-row-start: 16;
+}
+
+.start-18-00 {
+    grid-row-start: 17;
+}
+
+.start-18-30 {
+    grid-row-start: 18;
+}
+
+.start-19-00 {
+    grid-row-start: 19;
+}
+
+.start-19-30 {
+    grid-row-start: 20;
+}
+
+.day-of-week-1 {
+    grid-column-start: 1;
+}
+
+.day-of-week-2 {
+    grid-column-start: 2;
+}
+
+.day-of-week-3 {
+    grid-column-start: 3;
+}
+
+.day-of-week-4 {
+    grid-column-start: 4;
+}
+
+.day-of-week-5 {
+    grid-column-start: 5;
+}
+
+.day-of-week-6 {
+    grid-column-start: 6;
+}
+
+.day-of-week-7 {
+    grid-column-start: 7;
+}

@@ -1,0 +1,123 @@
+.students-section {
+    /*width: 100%;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+:root {
+    --btn-height: 40px;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+}
+
+.students-data {
+    width: 1000px;
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 1fr var(--btn-height);
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.column-one {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    max-width: 300px;
+}
+
+.column-two {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+    max-width: 300px;
+}
+
+.column-three {
+    grid-row: 1 / span 1;
+    grid-column: 3 / span 1;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.field-label:not(last-child) {
+    margin-bottom: 15px;
+}
+
+.field-input {
+    width: 220px;
+    margin-top: 5px;
+    padding: 2px 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    font-family: system-ui, sans-serif;
+}
+
+select.field-input {
+    width: 231px;
+    cursor: pointer;
+}
+
+.field-input:disabled {
+    cursor: default;
+}
+
+.groups-header {
+    font-weight: 400;
+}
+
+.groups-list {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.groups-list-item {
+    font-weight: 300;
+}
+
+.submit-container {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    width: 170px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.button.inactive {
+    display: none;
+}
+
+#edit-button {
+    background: var(--yellow-light);
+    border: 1px solid var(--yellow);
+}
+
+#delete-button {
+    background: var(--red-light);
+    border: 1px solid var(--red);
+}
+
+#exit-button {
+    background: var(--blue-light);
+    border: 1px solid var(--blue);
+}
+
+#save-button {
+    background: var(--green-light);
+    border: 1px solid var(--green);
+}

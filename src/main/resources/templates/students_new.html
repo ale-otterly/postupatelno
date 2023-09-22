@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New student</title>
+    <link rel="stylesheet" href="/css/students-new.css">
+    <link rel="stylesheet" href="/css/root.css">
+</head>
+<body>
+    <header class="header" th:replace="~{fragments/header-fragment :: headerFragment}"></header>
+    <section class="form-section">
+        <h1 class="form-header">Новый ученик</h1>
+        <form class="students-form" th:action="@{/students/new}" th:object="${studentInfo}" method="post">
+            <div class="column column-one">
+                <label class="field-label">Имя ученика
+                    <input class="field-input" type="text" name="name" th:field="*{name}" placeholder="Имя ученика"/>
+                </label>
+                <label class="field-label">Класс
+                    <input class="field-input" type="number" th:field="*{year}" placeholder="Класс"/>
+                </label>
+                <label class="field-label">Информация
+                    <textarea class="field-input" th:field="*{info}" placeholder="Информация"></textarea>
+                </label>
+                <label class="field-label">Тип посещаемости
+                    <select class="field-input" th:field="*{attendanceType}">
+                        <option value="" hidden>Выбрать тип посещаемости</option>
+                        <option th:each="type : ${T(main.model.entities.enums.AttendanceType).values()}" th:value="${type}"
+                                th:text="${type.getDisplayValue()}"></option>
+                    </select>
+                </label>
+                <label class="field-label">Статус
+                    <select class="field-input" th:field="*{studentStatus}">
+                        <option value="" hidden>Выбрать статус</option>
+                        <option th:each="status : ${T(main.model.entities.enums.StudentStatus).values()}" th:value="${status}"
+                                th:text="${status.getDisplayValue()}"></option>
+                    </select>
+                </label>
+            </div>
+            <div class="column column-two">
+                <label class="field-label">Имя родителя
+                    <input class="field-input" type="text" th:field="*{parentName}" placeholder="Имя родителя"/>
+                </label>
+                <label class="field-label">Телефон родителя
+                    <input class="field-input" type="text" th:field="*{parentPhone}" placeholder="Телефон родителя"/>
+                </label>
+                <label class="field-label">Контакты
+                    <textarea class="field-input" th:field="*{contactInfo}" placeholder="Контакты"></textarea>
+                </label>
+                <label class="field-label">Баланс
+                    <input class="field-input" type="number" th:field="*{balance}" placeholder="Баланс"/>
+                </label>
+                <label class="field-label">Администратор
+                    <select class="field-input" th:field="*{admin.id}">
+                        <option value="0" hidden>Выбрать админа</option>
+                        <option th:each="administrator : ${adminsInfo}" th:value="${administrator.id}"
+                                th:text="${administrator.name}"></option>
+                    </select>
+                </label>
+            </div>
+            <div class="submit-container">
+                <input class="button reset-button" type="reset" value="Очистить поля"/>
+                <input class="button submit-button" type="submit" value="Добавить ученика"/>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

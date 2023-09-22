@@ -1,0 +1,57 @@
+:root {
+    --header-height: 40px;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.logo {
+
+}
+
+.logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%;
+}
+
+.logo-img {
+    max-height: var(--header-height);
+}
+
+.header-menu-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: stretch;
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
+}
+
+.header-menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-menu-item:not(:first-child) {
+    margin-left: 5px;
+}
+
+.header-menu-item:not(:last-child) {
+    margin-right: 5px;
+}
+
+.header-menu-item-link {
+    text-decoration: none;
+    padding: 0 5px;
+}

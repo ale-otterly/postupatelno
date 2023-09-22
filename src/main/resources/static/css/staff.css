@@ -1,0 +1,44 @@
+body {
+    font-family: system-ui, sans-serif;
+}
+
+.payments-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: solid 1px var(--border-color);
+    text-align: center;
+}
+
+.table-header {
+    height: 70px;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 500;
+}
+.table-header-cell {
+    padding: 5px;
+}
+
+.table-row {
+    height: 50px;
+}
+
+.table-cell {
+    font-weight: 400;
+    padding: 5px;
+}
+
+.groups-list-item {
+    list-style: none;
+}
+
+th:not(:last-child), td:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+}

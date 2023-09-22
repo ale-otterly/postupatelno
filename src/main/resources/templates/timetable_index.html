@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание</title>
+    <link rel="stylesheet" href="/css/timetable.css">
+    <link rel="stylesheet" href="/css/root.css">
+</head>
+<body>
+<header class="header" th:replace="~{fragments/header-fragment :: headerFragment}"></header>
+<div class="timetable-container">
+    <div class="calendar">
+        <div class="timeline">
+            <div class="time-marker">10:00</div>
+            <div class="time-marker">10:30</div>
+            <div class="time-marker">11:00</div>
+            <div class="time-marker">11:30</div>
+            <div class="time-marker">12:00</div>
+            <div class="time-marker">12:30</div>
+            <div class="time-marker">13:00</div>
+            <div class="time-marker">13:30</div>
+            <div class="time-marker">14:00</div>
+            <div class="time-marker">14:30</div>
+            <div class="time-marker">15:00</div>
+            <div class="time-marker">15:30</div>
+            <div class="time-marker">16:00</div>
+            <div class="time-marker">16:30</div>
+            <div class="time-marker">17:00</div>
+            <div class="time-marker">17:30</div>
+            <div class="time-marker">18:00</div>
+            <div class="time-marker">18:30</div>
+            <div class="time-marker">19:00</div>
+            <div class="time-marker">19:30</div>
+            <div class="time-marker">20:00</div>
+            <div class="time-marker">20:30</div>
+            <div class="time-marker">21:00</div>
+        </div>
+
+        <div class="days-container">
+            <div class="day">ПН</div>
+            <div class="day">ВТ</div>
+            <div class="day">СР</div>
+            <div class="day">ЧТ</div>
+            <div class="day">ПТ</div>
+            <div class="day">СБ</div>
+            <div class="day">ВС</div>
+        </div>
+
+        <div class="lessons">
+            <div class="lesson" th:each="lesson : ${allLessons}"
+                 th:classappend="|start-${#temporals.format(lesson.dateTime, 'HH-mm')} day-of-week-${#temporals.dayOfWeek(lesson.dateTime)}|"
+                 th:style="'background:' + ${lesson.group.teacher.color} + ';'"
+                 th:onclick="'lessonClick(' + ${lesson.group.id} + ');'">
+                <p class="title" th:text="${lesson.group.subject.getDisplayValue()} + ' – ' + ${lesson.group.year}">
+                    Title</p>
+                <div class="time-room">
+                    <p class="time"
+                       th:text="${#temporals.format(lesson.dateTime, 'HH:mm')} +' – ' + ${#temporals.format(lesson.dateTime.plusMinutes(90), 'HH:mm')}">
+                        Time</p>
+                    <p class="room" th:text="${lesson.room.name}">Room</p>
+                </div>
+                <p class="teacher" th:text="${lesson.group.teacher.name}">Teacher</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/timetable.js"></script>
+</body>
+</html>

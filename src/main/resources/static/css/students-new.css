@@ -1,0 +1,83 @@
+:root {
+    --btn-height: 40px;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+}
+
+.form-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.students-form {
+    width: 600px;
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 1fr var(--btn-height);
+    grid-template-columns: 1fr 1fr;
+}
+
+.column-one {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
+
+.column-two {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.field-label:not(last-child) {
+    margin-bottom: 15px;
+}
+
+.field-input {
+    width: 220px;
+    margin-top: 5px;
+    padding: 2px 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    font-family: system-ui, sans-serif;
+}
+
+select.field-input {
+    width: 231px;
+    cursor: pointer;
+}
+
+.submit-container {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    width: 150px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.reset-button {
+    background: var(--yellow-light);
+    border: 1px solid var(--yellow);
+}
+
+.submit-button {
+    background: var(--green-light);
+    border: 1px solid var(--green);
+}

@@ -1,0 +1,34 @@
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<header class="header" th:fragment="headerFragment">
+    <link rel="stylesheet" href="/css/header.css">
+    <div class="logo">
+        <a class="logo-link" href="/students">
+            <img class="logo-img" src="/images/full_colorful_logo.png" alt="Логотип курсов «Поступательно»">
+        </a>
+    </div>
+    <div class="header-menu-container">
+        <ul class="header-menu-list">
+            <li class="header-menu-item">
+                <a class="header-menu-item-link" href="../students">Ученики</a>
+            </li>
+            <li class="header-menu-item">
+                <a class="header-menu-item-link" href="../groups">Группы</a>
+            </li>
+            <li class="header-menu-item">
+                <a class="header-menu-item-link" href="../timetable">Расписание</a>
+            </li>
+            <li class="header-menu-item">
+                <a class="header-menu-item-link" href="../payments">Оплата</a>
+            </li>
+            <li class="header-menu-item">
+                <a class="header-menu-item-link" href="../staff">Команда</a>
+            </li>
+        </ul>
+    </div>
+</header>
+</body>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ученики</title>
+    <link rel="stylesheet" href="/css/students.css">
+    <!--    <link rel="stylesheet" href="/css/student-modal.css">-->
+    <link rel="stylesheet" href="/css/root.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+<header th:replace="~{fragments/header-fragment :: headerFragment}"></header>
+<section class="students-section">
+    <form class="add-student-form" action="/students/new" target="_blank">
+        <input class="add-student-form-input" type="submit" value="Добавить нового ученика"/>
+    </form>
+    <h1 class="students-header">УЧЕНИКИ</h1>
+    <table class="table">
+        <thead class="table-header">
+        <tr>
+            <th class="table-header-cell">Имя ученика</th>
+            <th class="table-header-cell">Имя родителя</th>
+            <th class="table-header-cell">Телефон родителя</th>
+            <th class="table-header-cell">Контактная информация</th>
+            <th class="table-header-cell">Тип посещаемости</th>
+            <th class="table-header-cell">Класс</th>
+            <th class="table-header-cell">Информация</th>
+            <th class="table-header-cell">Статус</th>
+            <th class="table-header-cell">Баланс</th>
+            <th class="table-header-cell">Админ</th>
+            <th class="table-header-cell">Действия</th>
+        </tr>
+        </thead>
+        <tbody class="table-body">
+        <tr class="table-row" th:each="student : ${studentsData}" th:id="'row-' + ${student.id}"
+            th:data-id="${student.id}">
+            <td class="table-cell" th:text="${student.name}"></td>
+            <td class="table-cell" th:text="${student.parentName}">2</td>
+            <td class="table-cell" th:text="${student.parentPhone}">3</td>
+            <td class="table-cell" th:text="${student.contactInfo}">4</td>
+            <td class="table-cell"
+                th:text="${student.attendanceType != null} ? ${student.attendanceType.getDisplayValue()} : '—'">5
+            </td>
+            <td class="table-cell" th:text="${student.year}">6</td>
+            <td class="table-cell" th:text="${student.info}">7</td>
+            <td class="table-cell"
+                th:text="${student.studentStatus != null} ? ${student.studentStatus.getDisplayValue()} : '—'">8
+            </td>
+            <td class="table-cell" th:text="${student.balance}">9</td>
+            <td class="table-cell" th:text="${student.admin.name}">10</td>
+            <td class="table-cell">
+                <div class="actions-container">
+                    <a class="details-link action-link" th:onclick="'detailsBtn(' + ${student.id} + ')'">
+                        <img class="details-icon icon" src="/images/eye.svg" alt="details-icon eye" title="Просмотреть">
+                    </a>
+                    <a class="edit-link action-link" th:onclick="'editBtn(' + ${student.id} + ');'">
+                        <img class="edit-icon icon" src="/images/pencil.svg" alt="edit-icon pencil" title="Редактировать">
+                    </a>
+                    <a class="delete-link action-link" onclick="alert('Deletion alert')">
+                        <img class="delete-icon icon" src="/images/trash_bin.svg" alt="delete-icon trash bin" title="Удалить">
+                    </a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!--    <div class="modal" th:id="'modal-6'" th:replace="~{fragments/student-form-fragment :: studentModalFragment(${studentsData.get(0)})}"></div>-->
+</section>
+<script src="/js/students.js"></script>
+</body>
+</html>

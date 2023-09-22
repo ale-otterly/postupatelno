@@ -1,0 +1,74 @@
+body {
+    font-family: system-ui, sans-serif;
+}
+
+.attendance-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.attendance-container {
+    width: 600px;
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 1fr var(--btn-height);
+    grid-template-columns: 1fr 1fr;
+}
+
+.headers-container {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 10px 0;
+}
+
+h3 {
+    margin: 0 0 10px 0;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column-one {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+    max-width: 300px;
+}
+
+.datepicker, #date-btn, #attendance-btn {
+    margin-top: 10px;
+}
+
+.column-two {
+    display: none;
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+    max-width: 300px;
+}
+
+h4 {
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.datepicker-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.students-form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Оплаты</title>
+    <link rel="stylesheet" href="/css/payments.css">
+    <link rel="stylesheet" href="/css/root.css">
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>-->
+</head>
+<body>
+<header th:replace="~{fragments/header-fragment :: headerFragment}"></header>
+<section class="payments-section">
+    <h1 class="payments-header">ОПЛАТА</h1>
+    <table class="table">
+        <thead class="table-header">
+            <tr>
+                <th class="table-header-cell">Дата</th>
+                <th class="table-header-cell">Время</th>
+                <th class="table-header-cell">Имя ученика</th>
+                <th class="table-header-cell">Метод оплаты</th>
+                <th class="table-header-cell">Сумма</th>
+            </tr>
+        </thead>
+        <tbody class="table-body">
+            <tr class="table-row" th:each="payment : ${paymentsData}">
+                <th class="table-cell" th:text="${#temporals.format(payment.dateTime,'dd.MM.yyyy')}">1</th>
+                <th class="table-cell" th:text="${#temporals.format(payment.dateTime,'HH:mm')}">2</th>
+                <th class="table-cell" th:text="${payment.student.name}">3</th>
+                <th class="table-cell" th:text="${payment.paymentMethod.getDisplayValue()}">4</th>
+                <th class="table-cell" th:text="${payment.amount}">5</th>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

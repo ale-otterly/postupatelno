@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${groupInfo.subject.getDisplayValue()} + ' (' + ${groupInfo.year} + ' класс)'"></title>
+    <link rel="stylesheet" href="/css/attendance.css">
+    <link rel="stylesheet" href="/css/root.css">
+</head>
+<body>
+<header class="header" th:replace="~{fragments/header-fragment :: headerFragment}"></header>
+<section class="attendance-section">
+    <div class="attendance-container">
+        <div class="headers-container" th:style="'background:' + ${groupInfo.teacher.color} + ';'">
+            <h1 class="attendance-header" th:text="${groupInfo.subject.getDisplayValue()} + ' (' + ${groupInfo.year} + ' класс)'"></h1>
+            <h3 class="attendance-header-teacher" th:text="${groupInfo.teacher.name}"></h3>
+        </div>
+        <div class="column column-one">
+            <div class="day-time"
+                 th:text="${#temporals.format(groupInfo.lessons[0].dateTime,'EEEE HH:mm', new java.util.Locale('ru'))}"></div>
+            <form class="datepicker-form">
+                <label class="datepicker-label" >Дата
+                    <select class="datepicker" id="datepicker">
+                        <option class="datepicker-option" th:each="lesson : ${groupInfo.lessons}"
+                                th:text="${#temporals.format(lesson.dateTime,'dd MMMM yyyy', new java.util.Locale('ru'))}"></option>
+                    </select>
+                </label>
+                <input type="button" id="date-btn" value="Показать посещаемость" onclick="loadStudentsAttendance()">
+            </form>
+        </div>
+        <div class="column column-two">
+            <h4 class="students-header">Ученики</h4>
+            <form class="students-form">
+                <div th:each="student : ${activeStudents}">
+                    <input class="student-checkbox" th:id="'student-' + ${student.id}" type="checkbox">
+                    <label th:for="'student-' + ${student.id}" th:text="${student.name}"></label>
+                </div>
+                <input type="button" id="attendance-btn" value="Сохранить посещаемость" onclick="saveStudentsAttendance()">
+            </form>
+        </div>
+    </div>
+
+</section>
+
+<script src="/js/attendance.js"></script>
+</body>
+</html>

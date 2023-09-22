@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Команда</title>
+    <link rel="stylesheet" href="/css/staff.css">
+    <link rel="stylesheet" href="/css/root.css">
+</head>
+<body>
+<header th:replace="~{fragments/header-fragment :: headerFragment}"></header>
+<section class="payments-section">
+    <h1 class="payments-header">КОМАНДА</h1>
+    <table class="table">
+        <thead class="table-header">
+        <tr>
+            <th class="table-header-cell">Имя</th>
+            <th class="table-header-cell">Телефон</th>
+            <th class="table-header-cell">Информация</th>
+        </tr>
+        </thead>
+        <tbody class="table-body">
+        <tr class="table-row admin" th:each="admin : ${adminsData}">
+            <th class="table-cell" th:text="${admin.name}">1</th>
+            <th class="table-cell" th:text="${admin.phone}">2</th>
+            <th class="table-cell">Администратор</th>
+        </tr>
+        <tr class="table-row" th:each="teacher : ${teachersData}" th:style="'background:' + ${teacher.color} + ';'">
+            <th class="table-cell" th:text="${teacher.name}">1</th>
+            <th class="table-cell" th:text="${teacher.phone}">2</th>
+            <th class="table-cell">
+                <ul class="groups-list">
+                    <li class="groups-list-item" th:each="group : ${teacher.groups}"
+                    th:text="${group.subject.getDisplayValue()} + ' — ' + ${group.year} + ' класс (' + ${group.attendanceType.getDisplayValue().toLowerCase()} + ')'">
+                    </li>
+                </ul>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>
